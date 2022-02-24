@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Palette from './Palette';
+import PaletteList from './PaletteList';
+import SingleColorPalette from './SingleColorPalette';
+import NewPaletteForm from './NewPaletteForm';
+import seedColors from './seedColors';
+import { Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 
-function App() {
+function App()
+{
+  const [palettes, setPalettes] = useState(seedColors)
+  function savePalette(newPalette)
+  {
+    // console.log(newPalette);
+    setPalettes([...palettes, newPalette]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path='/'
+          element={<PaletteList palettes={palettes} />} />
+        <Route path='/palette/:id'
+          element={<Palette palettes={palettes} />} />
+        <Route path='/palette/:paletteId/:colorId'
+          element={<SingleColorPalette palettes={palettes} />} />
+        <Route path='/palette/new'
+          element={<NewPaletteForm palettes={palettes} savePalette={savePalette} />} />
+      </Routes>
+      {/* <div className="App">
+        <Palette palette={myPalette} />
+      </div> */}
+    </>
   );
 }
 

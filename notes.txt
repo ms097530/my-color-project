@@ -1,0 +1,4 @@
+pass props into Palette/SinglePalette from Links and then check if those props
+are defined
+if not, do whole query
+if so, use that prop to get what you need
