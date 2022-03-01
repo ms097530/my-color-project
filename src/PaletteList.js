@@ -11,7 +11,8 @@ const PaletteListStyles =
         height: '100vh',
         display: 'flex',
         alignItems: 'flex-start',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        overflowY: 'auto'
     },
     container:
     {
@@ -19,7 +20,8 @@ const PaletteListStyles =
         display: 'flex',
         alignItems: 'flex-start',
         flexDirection: 'column',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        marginBottom: '1rem'
     },
     nav:
     {
@@ -27,7 +29,12 @@ const PaletteListStyles =
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        color: 'white'
+        color: 'white',
+        '@media (max-width: 600px)':
+        {
+            flexDirection: 'column',
+            marginBottom: '1rem'
+        }
     },
     palettes:
     {
@@ -35,15 +42,25 @@ const PaletteListStyles =
         width: '100%',
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 30%)',
-        gap: '5%'
+        gap: '5%',
+        '@media (max-width: 1100px)':
+        {
+            gridTemplateColumns: 'repeat(2, 45%)',
+            gap: '5% 10%'
+        },
+        '@media (max-width: 600px)':
+        {
+            gridTemplateColumns: 'repeat(1, 100%)',
+            gap: '2rem'
+        }
     }
 };
 
-const PaletteList = ({ palettes }) =>
+const PaletteList = ({ palettes, deletePalette }) =>
 {
     const miniPalettes = palettes.map(palette =>
     {
-        return <MiniPalette {...palette} key={palette.paletteName} />
+        return <MiniPalette {...palette} key={palette.paletteName} deletePalette={deletePalette} />
     });
     return (
         <Box sx={PaletteListStyles.main}>

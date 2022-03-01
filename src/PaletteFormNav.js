@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import React from 'react';
+import { styled } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Button } from '@mui/material';
-import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { Link } from 'react-router-dom';
-
-const drawerWidth = 400;
+import './PaletteMetaForm';
+import PaletteMetaForm from './PaletteMetaForm';
+import Box from '@mui/material/Box';
+import { drawerWidth } from './utility/constants';
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -31,70 +31,45 @@ const AppBar = styled(MuiAppBar, {
 
 const PaletteFormNav = ({ open, setOpen, palettes, handleSubmit }) =>
 {
-    const [newPaletteName, setNewPaletteName] = useState('');
-    // const [open, setOpen] = React.useState(false);
-
-    useEffect(() =>
-    {
-        ValidatorForm.addValidationRule('isPaletteNameUnique', value =>
-        {
-            return palettes.every(palette => palette.paletteName.toLowerCase() !== newPaletteName.toLowerCase());
-        });
-    });
-
+    const [showNameForm, setShowNameForm] = React.useState(false);
     const handleDrawerOpen = () =>
     {
         setOpen(true);
     };
-
-    function handleChangePaletteName(e)
+    const handleClickShowNameForm = () =>
     {
-        setNewPaletteName(e.target.value);
-    }
+        setShowNameForm(true);
+    };
 
-    function submitName()
+    const handleCloseNameForm = () =>
     {
-        handleSubmit(newPaletteName);
-    }
+        setShowNameForm(false);
+    };
+
 
 
     return (
         <>
             <CssBaseline />
-            <AppBar position="fixed" open={open} color='default' >
+            <AppBar position="fixed" open={open} color='default' className='PaletteFormNav'>
                 <Toolbar>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
-                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
-                    >
-                        <MenuIcon />
+                        sx={{ mr: 2, ...(open && { display: 'none' }) }}>
+                        <ChevronRightIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Persistent drawer
-                    </Typography>
-                    <ValidatorForm onSubmit={submitName} className=''>
-                        <TextValidator
-                            label='Palette Name'
-                            value={newPaletteName}
-                            name='newPaletteName'
-                            onChange={handleChangePaletteName}
-                            validators={['required', 'isPaletteNameUnique']}
-                            errorMessages={['Enter Palette Name', 'Palette name taken']}
-                        />
-                        <Link to='/' style={{ textDecoration: 'none' }}>
-                            <Button variant='contained' color='secondary'>Go Back</Button>
-                        </Link>
-                        <Button
-                            type='submit'
-                            variant='contained'
-                            color='primary'
-                            sx={{ marginLeft: 'auto' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'end', flexBasis: '100%', gap: '1rem' }}>
+                        {showNameForm && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} handleClose={handleCloseNameForm} />}
+                        <Button variant="contained" color='primary' onClick={handleClickShowNameForm}>
                             Save Palette
                         </Button>
-                    </ValidatorForm>
+                        <Link to='/' style={{ textDecoration: 'none' }}>
+                            <Button variant='contained' color='secondary' sx={{ height: '100%' }}>Go Back</Button>
+                        </Link>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </>

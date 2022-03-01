@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from '@mui/system';
 import { Div, H5, Span } from './utility/styledComponents/styled';
 import { useNavigate } from 'react-router-dom';
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const MiniPaletteStyles =
 {
@@ -12,9 +13,10 @@ const MiniPaletteStyles =
         borderRadius: '5px',
         padding: '0.5rem',
         position: 'relative',
-        '&:hover':
+        cursor: 'pointer',
+        '&:hover svg':
         {
-            cursor: 'pointer'
+            opacity: 1
         }
     },
     colors:
@@ -49,19 +51,42 @@ const MiniPaletteStyles =
         margin: '0 auto',
         position: 'relative',
         marginBottom: '-4px'
+    },
+    deleteIcon:
+    {
+        color: 'white',
+        backgroundColor: '#eb3d30',
+        width: '20px',
+        height: '20px',
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        padding: '10px',
+        zIndex: 10,
+        opacity: 0,
+        borderRadius: '0.2rem',
+        transition: 'all 0.3s ease-in-out'
     }
 }
 
 
-const MiniPalette = ({ colors, emoji, id, paletteName }) =>
+const MiniPalette = ({ colors, emoji, id, paletteName, deletePalette }) =>
 {
     const navigate = useNavigate();
+    function handleClick(e)
+    {
+        deletePalette(e, id);
+    }
+
     const miniColorBoxes = colors.map(color =>
     {
         return <Div sx={MiniPaletteStyles.miniColor} style={{ backgroundColor: color.color }} key={color.name}></Div>
     })
     return (
         <Box sx={MiniPaletteStyles.root} onClick={() => navigate(`/palette/${id}`)} >
+            <Div>
+                <DeleteIcon sx={MiniPaletteStyles.deleteIcon} onClick={handleClick} />
+            </Div>
             <Div sx={MiniPaletteStyles.colors}>
                 {miniColorBoxes}
             </Div>

@@ -149,3 +149,19 @@
 {
     text-shadow: none;
 }
+
+@media (max-width: 900px)
+{
+    .ColorBox
+    {
+        width: 50%;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .ColorBox
+    {
+        width: 100%;        
+    }
+}

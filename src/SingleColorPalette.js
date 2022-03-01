@@ -28,7 +28,7 @@ const SingleColorPalette = (props) =>
     })
     // console.log(boxes);
     return (
-        <Div sx={{ height: '100vh', overflow: 'hidden' }}>
+        <Div sx={{ height: '100vh', overflow: 'hidden', '@media (max-width: 900px)': { overflowY: 'visible' } }}>
             <Navbar handleChange={changeFormat} showSlider={false} />
             {/* '& .ColorBox' is being used to overwrite default styling on ColorBox */}
             <Div sx={{ height: '90%', '& .ColorBox': { height: '50%' } }}>

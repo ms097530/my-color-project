@@ -1,4 +1,2 @@
-pass props into Palette/SinglePalette from Links and then check if those props
-are defined
-if not, do whole query
-if so, use that prop to get what you need
+convert existing css to jss in respective js files and use custom mui breakpoints
+in all jss
