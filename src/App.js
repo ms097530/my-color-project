@@ -39,7 +39,7 @@ function App()
         <Route path='/palette/:id'
           element={<Palette palettes={palettes} />} />
         <Route path='/palette/:paletteId/:colorId'
-          element={<SingleColorPalette palettes={palettes} />} />
+          element={<SingleColorPalette palettes={palettes} showingFullPalette={false} />} />
         <Route path='/palette/new'
           element={<NewPaletteForm palettes={palettes} savePalette={savePalette} />} />
       </Routes>

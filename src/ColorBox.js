@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import './ColorBox.css';
+// import './ColorBox.css';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import useToggle from './hooks/useToggle';
 import { Link } from 'react-router-dom';
 import chroma from 'chroma-js';
+import { P, H1, Div, Span, MyButton } from './utility/styledComponents/styled'
+import styles from './styles/ColorBoxStyles';
 
 const DARKNESS_THRESHOLD = 0.1;
 const LIGHTNESS_THRESHOLD = 0.65;
@@ -22,30 +24,37 @@ const ColorBox = (props) =>
         if (copied)
             setTimeout(toggleCopied, 1500);
     })
-
+    // console.log(props.showingFullPalette)
     return (
         <CopyToClipboard text={background} onCopy={() => { toggleCopied(); }}>
-            <div className='ColorBox' style={{ background }} >
+            <Div className='ColorBox' sx={{
+                ...styles.ColorBox,
+                width: { xs: '100%', sm: '50%', md: '20%' },
+                height: props.showingFullPalette ?
+                    { xs: '5%', sm: '10%', md: '25%' } :
+                    { xs: '10%', sm: '20%', md: '50%' }
+            }} style={{ background }} >
                 {/* what appears when copy button is clicked */}
-                <div className={`copy-overlay${copied ? ' show' : ''}`} style={{ background }}></div>
-                <div className={`copy-msg${copied ? ' show' : ''}`}>
-                    <h1 className={isLightColor ? 'dark-text' : ''}>Copied!</h1>
-                    <p className={isLightColor ? 'dark-text' : ''}>{props.background}</p>
-                </div>
-                <div className='copy-container'>
-                    <div className='box-content'>
-                        <span className={isDarkColor ? 'light-text' : ''}>{name}</span>
-                    </div>
-                    <button className={`copy-button${isLightColor ? ' dark-text' : ''}`}>Copy</button>
-                </div>
+                <Div sx={{ ...styles.copyOverlay, ...(copied && styles.showOverlay) }} style={{ background }}></Div>
+
+                <Div sx={{ ...styles.copyMsg, ...(copied && styles.showMsg) }} >
+                    <H1 sx={{ ...(isLightColor && styles.darkText) }}>Copied!</H1>
+                    <P sx={{ ...(isLightColor && styles.darkText) }}>{props.background}</P>
+                </Div>
+                <Div className='copy-container'>
+                    <Div sx={styles.boxContent} /*className='box-content'*/>
+                        <Span sx={{ ...(isDarkColor && styles.lightText) }}>{name}</Span>
+                    </Div>
+                    <MyButton sx={{ ...styles.copyButton, ...(isLightColor && styles.darkText) }}>Copy</MyButton>
+                </Div>
                 {showLink &&
                     <Link
                         to={`${colorId}`}
                         onClick={e => e.stopPropagation()}>
-                        <span className={`see-more${isLightColor ? ' dark-text' : ''}`}>More</span>
+                        <Span sx={{ ...styles.seeMore, ...(isLightColor && styles.darkText) }} /*className={`see-more${isLightColor ? ' dark-text' : ''}`}*/>More</Span>
                     </Link>
                 }
-            </div>
+            </Div>
         </CopyToClipboard>
     );
 }

@@ -61,7 +61,7 @@ const PaletteFormNav = ({ open, setOpen, palettes, handleSubmit }) =>
                         sx={{ mr: 2, ...(open && { display: 'none' }) }}>
                         <ChevronRightIcon />
                     </IconButton>
-                    <Box sx={{ display: 'flex', justifyContent: 'end', flexBasis: '100%', gap: '1rem' }}>
+                    <Box sx={{ display: { xs: open ? 'none' : 'flex', sm: 'flex' }, justifyContent: 'end', flexBasis: '100%', gap: '1rem' }}>
                         {showNameForm && <PaletteMetaForm palettes={palettes} handleSubmit={handleSubmit} handleClose={handleCloseNameForm} />}
                         <Button variant="contained" color='primary' onClick={handleClickShowNameForm}>
                             Save Palette

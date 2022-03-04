@@ -1,13 +1,15 @@
 import React from 'react';
-import './Palette.css'
+// import './Palette.css'
+import { Footer, Span } from './utility/styledComponents/styled';
+import PaletteFooterStyles from './styles/PaletteFooterStyles';
 
 const PaletteFooter = ({ name, emoji }) =>
 {
     return (
-        <footer className='Palette-footer'>
-            <span>{name} </span>
-            <span className='emoji'>{emoji}</span>
-        </footer>
+        <Footer className='Palette-footer' sx={PaletteFooterStyles.PaletteFooter}>
+            <Span>{name} </Span>
+            <Span className='emoji' sx={PaletteFooterStyles.emoji} >{emoji}</Span>
+        </Footer>
     );
 }
 

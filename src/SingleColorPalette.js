@@ -5,6 +5,8 @@ import { Div } from './utility/styledComponents/styled';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
+// import styles from './styles/SingleColorPaletteStyles';
+import styles from './styles/PaletteStyles';
 
 
 const levels = [100, 200, 300, 400, 500, 600, 700, 800, 900];
@@ -23,17 +25,17 @@ const SingleColorPalette = (props) =>
     {
         let color = basePalette.colors[level].find(color => color.id === colorId);
         return (
-            <ColorBox key={color.name} name={color.name} background={color[format]} />
+            <ColorBox key={color.name} name={color.name} background={color[format]} showingFullPalette={false} />
         )
     })
     // console.log(boxes);
     return (
-        <Div sx={{ height: '100vh', overflow: 'hidden', '@media (max-width: 900px)': { overflowY: 'visible' } }}>
+        <Div sx={styles.Palette}>
             <Navbar handleChange={changeFormat} showSlider={false} />
             {/* '& .ColorBox' is being used to overwrite default styling on ColorBox */}
-            <Div sx={{ height: '90%', '& .ColorBox': { height: '50%' } }}>
+            <Div sx={styles.PaletteColors}>
                 {boxes}
-                <Div className='go-back ColorBox'>
+                <Div className='go-back ColorBox' sx={{ ...styles.goBack, width: { xs: '100%', sm: '50%', md: "20%" }, height: { xs: '10%', sm: '20%', md: '50%' } }}>
                     <Link className='back-button' to={`/palette/${paletteId}`}>Go Back</Link>
                 </Div>
             </Div>

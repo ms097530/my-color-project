@@ -5,7 +5,8 @@ import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import { Div } from './utility/styledComponents/styled';
-import './ColorPickerForm.css';
+// import './ColorPickerForm.css';
+import styles from './styles/ColorPickerFormStyles';
 
 const ColorPickerForm = ({ paletteIsFull, addColor, paletteColors, palettes, clearPalette }) =>
 {
@@ -69,9 +70,17 @@ const ColorPickerForm = ({ paletteIsFull, addColor, paletteColors, palettes, cle
 
 
     return (
-        <Div className='ColorPickerForm-container' sx={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', justifyContent: 'center', '> *': { width: '100%' } }}>
+        <Div sx={styles.container}>
             <Typography variant='h4' sx={{ textAlign: 'center' }}>Design Your Palette</Typography>
-            <Box sx={{ marginBlock: '1rem', display: 'flex', flex: 1, gap: '1rem', '> *': { flexGrow: 1 } }}>
+            <Box sx={
+                {
+                    marginBlock: '1rem',
+                    display: 'flex',
+                    flex: 1,
+                    gap: '1rem',
+                    '> *':
+                        { flexGrow: 1 }
+                }}>
                 <Button sx={{ marginLeft: '2.5%' }} variant='contained' color='secondary' onClick={clearPalette}>Clear Palette</Button>
                 <Button sx={{ marginRight: '2.5%' }} variant='contained' color='primary' onClick={getRandomColor}>Random Color</Button>
             </Box>
@@ -83,7 +92,7 @@ const ColorPickerForm = ({ paletteIsFull, addColor, paletteColors, palettes, cle
                     disableAlpha
                 />
             </Box>
-            <ValidatorForm onSubmit={handleAddColor} className='ColorNameForm'>
+            <ValidatorForm onSubmit={handleAddColor} style={styles.ColorNameForm}>
                 <TextValidator
                     value={newColorName}
                     onChange={handleNameChange}
@@ -93,7 +102,14 @@ const ColorPickerForm = ({ paletteIsFull, addColor, paletteColors, palettes, cle
                 />
                 <Button variant='contained'
                     color='primary'
-                    sx={{ backgroundColor: currentColor, marginLeft: '2.5%', marginRight: '2.5%', ':hover': { backgroundColor: 'darkslategrey' }, '&.Mui-disabled': { color: 'rgba(0,0,0,0.5)' } }}
+                    sx={{
+                        backgroundColor: currentColor,
+                        marginLeft: '2.5%',
+                        marginRight: '2.5%',
+                        ':hover': { backgroundColor: 'darkslategrey' },
+                        '&.Mui-disabled':
+                            { color: 'rgba(0,0,0,0.5)' }
+                    }}
                     type='submit'
                     disabled={paletteIsFull}>
                     {paletteIsFull ? 'Palette Full' : 'Add Color'}

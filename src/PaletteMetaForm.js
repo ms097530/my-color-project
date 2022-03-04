@@ -4,10 +4,8 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Div } from './utility/styledComponents/styled';
-import './PaletteMetaForm.css';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart';
 
@@ -38,7 +36,7 @@ const PaletteMetaForm = ({ palettes, handleSubmit, handleClose }) =>
 
 
     return (
-        <Div className='PaletteMetaForm'>
+        <Div>
             <Dialog open={stage === 'emoji'} onClose={handleClose}>
                 <DialogTitle >
                     Choose a Palette Emoji

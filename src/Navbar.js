@@ -5,10 +5,11 @@ import Select from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
 import 'rc-slider/assets/index.css';
-import './Navbar.css';
 import { IconButton } from '@mui/material';
 import useToggle from './hooks/useToggle';
 import { Link } from 'react-router-dom';
+import NavbarStyles from './styles/NavbarStyles';
+import { Div, Header, Span } from './utility/styledComponents/styled';
 
 const Navbar = ({ level, showSlider, changeLevel, handleChange }) =>
 {
@@ -21,19 +22,19 @@ const Navbar = ({ level, showSlider, changeLevel, handleChange }) =>
         handleChange(e.target.value);
     }
     return (
-        <header className='Navbar'>
-            <div className='logo'>
+        <Header sx={NavbarStyles.Navbar}>
+            <Div sx={NavbarStyles.logo}>
                 <Link to='/'>reactcolorpicker</Link>
-            </div>
+            </Div>
             {showSlider &&
-                <div className='slider-container'>
-                    <span>Level: {level}</span>
-                    <div className='slider'>
+                <Div sx={{ paddingLeft: { xs: '10px', md: '0px' } }}>
+                    <Span>Level: {level}</Span>
+                    <Div sx={NavbarStyles.slider}>
                         <Slider defaultValue={level} min={100} max={900} onAfterChange={changeLevel} step={100} />
-                    </div>
-                </div>
+                    </Div>
+                </Div>
             }
-            <div className='select-container'>
+            <Div sx={NavbarStyles.selectContainer}>
                 <Select
                     value={format}
                     onChange={handleFormatChange}
@@ -42,7 +43,7 @@ const Navbar = ({ level, showSlider, changeLevel, handleChange }) =>
                     <MenuItem value='rgb'>RGB - rgb(255,255,255)</MenuItem>
                     <MenuItem value='rgba'>RGBA - rgba(255,255,255,1)</MenuItem>
                 </Select>
-            </div>
+            </Div>
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                 open={open}
@@ -56,7 +57,7 @@ const Navbar = ({ level, showSlider, changeLevel, handleChange }) =>
                     </IconButton>
                 ]}
             />
-        </header>
+        </Header>
     );
 }
 
