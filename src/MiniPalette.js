@@ -7,12 +7,13 @@ import MiniPaletteStyles from './styles/MiniPaletteStyles';
 
 
 
-const MiniPalette = ({ colors, emoji, id, paletteName, deletePalette }) =>
+const MiniPalette = ({ colors, emoji, id, paletteName, openDialog }) =>
 {
     const navigate = useNavigate();
     function handleClick(e)
     {
-        deletePalette(e, id);
+        e.stopPropagation();
+        openDialog(id);
     }
 
     const miniColorBoxes = colors.map(color =>

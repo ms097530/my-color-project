@@ -20,10 +20,8 @@ function App()
   {
     localStorage.setItem('palettes', JSON.stringify(palettes));
   }
-  function deletePalette(e, id)
+  function deletePalette(id)
   {
-    e.stopPropagation();
-    // console.log(id);
     setPalettes(palettes.filter(palette => palette.id !== id));
   }
   useEffect(() =>
