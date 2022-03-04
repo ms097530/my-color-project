@@ -121,7 +121,7 @@ const NewPaletteForm = (props) =>
             </Drawer>
             <Main open={open} sx={{ height: 'calc(100vh - 64px)', padding: 0 }}>
                 <DrawerHeader />
-                <DraggableColorList paletteColors={paletteColors} deleteColorBox={deleteColorBox} axis='xy' onSortEnd={onSortEnd} />
+                <DraggableColorList distance={15} paletteColors={paletteColors} deleteColorBox={deleteColorBox} axis='xy' onSortEnd={onSortEnd} />
             </Main>
         </Box>
     );
