@@ -6,10 +6,10 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import './PaletteMetaForm';
-import PaletteMetaForm from './PaletteMetaForm';
 import Box from '@mui/material/Box';
+import { Link } from 'react-router-dom';
+
+import PaletteMetaForm from './PaletteMetaForm';
 import { drawerWidth } from './utility/constants';
 
 const AppBar = styled(MuiAppBar, {

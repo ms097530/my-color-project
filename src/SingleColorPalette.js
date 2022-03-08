@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+
 import { generatePalette, findPalette } from './colorHelpers';
 import { Div } from './utility/styledComponents/styled';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
-// import styles from './styles/SingleColorPaletteStyles';
 import styles from './styles/PaletteStyles';
 
 
@@ -27,8 +27,8 @@ const SingleColorPalette = (props) =>
         return (
             <ColorBox key={color.name} name={color.name} background={color[format]} showingFullPalette={false} />
         )
-    })
-    // console.log(boxes);
+    });
+
     return (
         <Div sx={styles.Palette}>
             <Navbar handleChange={changeFormat} showSlider={false} />

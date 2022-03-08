@@ -1,8 +1,9 @@
 import React from 'react';
-import { Div, Span } from './utility/styledComponents/styled';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { SortableElement } from 'react-sortable-hoc';
 import chroma from 'chroma-js';
+
+import { Div, Span } from './utility/styledComponents/styled';
 import styles from './styles/DraggableColorBoxStyles';
 
 const DARKNESS_THRESHOLD = 0.1;

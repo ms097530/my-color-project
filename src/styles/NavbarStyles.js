@@ -30,7 +30,7 @@ export default
         },
         slider:
         {
-            width: { xs: '80px', sm: '120px', md: '340px' },
+            width: { xs: '140px', md: '340px' },
             margin: '0 10px',
             display: 'inline-block',
             '& .rc-slider-track':

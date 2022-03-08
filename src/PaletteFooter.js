@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Palette.css'
+
 import { Footer, Span } from './utility/styledComponents/styled';
 import PaletteFooterStyles from './styles/PaletteFooterStyles';
 

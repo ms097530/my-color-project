@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Box } from '@mui/system';
-import { Div, H5, Span } from './utility/styledComponents/styled';
 import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
+
+import { Div, H5, Span } from './utility/styledComponents/styled';
 import MiniPaletteStyles from './styles/MiniPaletteStyles';
 
 
@@ -33,4 +34,4 @@ const MiniPalette = ({ colors, emoji, id, paletteName, openDialog }) =>
     );
 }
 
-export default MiniPalette;
+export default memo(MiniPalette);

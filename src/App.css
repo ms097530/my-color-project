@@ -4,7 +4,7 @@
 }
 
 
-.fade-route-enter
+/* .fade-route-enter
 {
   opacity: 0;
 }
@@ -12,9 +12,9 @@
 {
   opacity: 1;
   transition: opacity 500ms ease-in;
-}
+} */
 
-.fade-route-exit
+/* .fade-route-exit
 {
   
   opacity: 1;
@@ -24,11 +24,4 @@
   
   opacity: 0;
   transition: opacity 500ms ease-in;
-}
-
-.page
-{
-  height: 100vh;
-  position: fixed;
-  width: 100%;
-}
+} */

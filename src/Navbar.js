@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import Slider, { Range } from 'rc-slider';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
-import 'rc-slider/assets/index.css';
 import { IconButton } from '@mui/material';
-import useToggle from './hooks/useToggle';
 import { Link } from 'react-router-dom';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+
+import useToggle from './hooks/useToggle';
 import NavbarStyles from './styles/NavbarStyles';
 import { Div, Header, Span } from './utility/styledComponents/styled';
 

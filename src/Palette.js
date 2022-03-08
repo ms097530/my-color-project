@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import ColorBox from './ColorBox';
 import { generatePalette, findPalette } from './colorHelpers';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
-// import './Palette.css';
 import { Div } from './utility/styledComponents/styled';
 import PaletteStyles from './styles/PaletteStyles';
 

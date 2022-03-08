@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@mui/material/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { Div } from './utility/styledComponents/styled';
 import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart';
+
+import { Div } from './utility/styledComponents/styled';
+
 
 const PaletteMetaForm = ({ palettes, handleSubmit, handleClose }) =>
 {

@@ -5,12 +5,14 @@ import Drawer from '@mui/material/Drawer';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import DraggableColorList from './DraggableColorList';
 import { useNavigate } from 'react-router-dom';
 import { arrayMove } from 'react-sortable-hoc';
+
+import DraggableColorList from './DraggableColorList';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import { drawerWidth } from './utility/constants';
+import seedColors from './seedColors';
 
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -44,7 +46,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 const NewPaletteForm = (props) =>
 {
-    const [paletteColors, setPaletteColors] = useState([...props.palettes[0].colors]);
+    const [paletteColors, setPaletteColors] = useState([...seedColors[0].colors]);
 
     const navigate = useNavigate();
     const theme = useTheme();
